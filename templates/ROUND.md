@@ -1,6 +1,21 @@
+---
+# 机器可读授权块（v2.0）。越权检查只认这里，不解析正文表格。
+round: R00X
+status: DRAFT              # DRAFT | APPROVED | EXECUTING | AWAITING_DECISION | REVIEW | CLOSED | BLOCKED
+round_type: CONFIRMATORY   # CONFIRMATORY（1–2 个变量，可归因）| EXPLORATORY（可多变量，结论只能到「报告声称」）
+allowed_files: []          # glob 白名单；空数组 = 只读轮次，不是「没填就放行」
+read_only: []
+forbidden: []
+budget: { runs: 1, gpu_hours: 0 }
+ablation: []               # CONFIRMATORY 必填：[{ id: A1, remove: "...", expect: "..." }]
+approved_by: NONE          # 研究者本人；AI 不得代填
+approved_at: NONE
+approval_quote: NONE       # 研究者原话，缺此格即视为未批准
+---
+
 # R00X：单轮科研任务（复制后改为实际轮次名）
 
-> 状态：`DRAFT`（默认） / `APPROVED` / `EXECUTING` / `AWAITING_DECISION` / `REVIEW` / `CLOSED` / `BLOCKED`。
+> 状态（与 front-matter 的 `status` 同源，**以 front-matter 为准**）：`DRAFT`（默认） / `APPROVED` / `EXECUTING` / `AWAITING_DECISION` / `REVIEW` / `CLOSED` / `BLOCKED`。
 >
 > 项目：`<名称>`；活动分支：`<branch>`；起始 HEAD：`<SHA>`；研究问题版本：`<协议版本>`。
 

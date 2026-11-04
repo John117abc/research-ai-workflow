@@ -1,0 +1,31 @@
+# research/state.yml —— 当前阶段与活动轮次
+#
+# 只存 ID、状态、指针；不存正文。正文仍在 PROJECT_STATE.md 与 ROUND.md 里。
+# 派生信息（未验证主张数、文献缺口、越权文件数）不写在这里，用的时候现算——
+# 否则会出现第三份会和 PROJECT_STATE.md 打架的「真相」。
+#
+# 手工维护即可；有了程序再由程序维护。
+
+version: 1
+
+project:
+  name: "<项目名>"
+  root: "<绝对路径>"
+  branch: "<活动分支>"
+
+library:
+  root: "<论文库绝对路径>"
+  mode: global            # global：一个库被多项目引用 | per-project：每项目一份
+
+phase: IDEATION           # IDEATION | FROZEN | EXECUTING | REVIEW | CLOSED
+
+round:
+  active: NONE            # 例：R4
+  approved: NONE          # 与 active 不同 = 存在未批准轮次
+  file: NONE              # research/rounds/R4.md
+  type: NONE              # CONFIRMATORY | EXPLORATORY
+
+pending_changes: []       # [{ id: C001, status: PROPOSED, blocks: [metrics, baseline] }]
+
+last_checked_head: NONE   # 最后核对过的 commit SHA
+updated: "<YYYY-MM-DD>"
