@@ -34,7 +34,27 @@
 
 ## 1. 开工检查（每次会话第一件事）
 
-按顺序读，读到哪一步缺文件就停在哪一步并报告：
+### 第 0 步：确认你站在哪个仓库里（先做，别跳）
+
+```bash
+git rev-parse --show-toplevel   # 当前仓库根目录
+git remote -v                   # 这个仓库会推到哪里
+```
+
+判定：
+
+| 结果 | 动作 |
+|---|---|
+| remote 指向**本项目研究仓库** | 正常，继续 |
+| remote 指向 `research-ai-workflow` | **立即停止**。你在协议仓库里，任何提交都会污染协议 |
+| 当前目录是 `research-ai-workflow` 的子目录 | **立即停止**。项目不能建在协议仓库内部（嵌套仓库） |
+| 没有 `.git` | 报告：这是新仓库还是没初始化？等研究者确认 |
+
+**为什么这条要放第一步**：在协议仓库里跑实验、写代码、`git add .` 再 push，是把项目文件灌进方法论仓库——而且这个错误一旦发生，`git revert` 也清不干净（历史里留着）。**比越权改文件严重得多。**
+
+### 然后按顺序读
+
+读到哪一步缺文件就停在哪一步并报告：
 
 1. `RESEARCH_ACTIVE.md` — 定位活动仓库与分支
 2. 该分支的 `PROJECT_STATE.md` — 当前问题、最新决策、未决审批
@@ -338,8 +358,12 @@ approval_quote: NONE
 
 ### 10.2 建仓库
 
+> **顺序不能反**：先在 GitHub 建**项目**仓库，再把它 clone 下来。
+> **不要**先 clone 协议仓库、然后在它里面 `mkdir` 建项目——`git add .` 会把项目文件推给协议仓库，而且历史里擦不掉。
+
 1. GitHub 建**私有**仓库（公开前先确认不含受限数据、PDF、大数据）
-2. 本地 clone 到固定位置
+2. 把**项目**仓库 clone 到独立位置（如 `D:\ai_space\projects\<name>`），
+   然后核对 `git remote -v` 指向的是这个项目仓库，不是协议仓库
 3. 复制 `PROTOCOL.md`（版本号在文件头）、`prompts/` 三份提示词，与五个模板：
    `AGENTS.md` / `RESEARCH_ACTIVE.md` / `PROJECT_STATE.md` / `RESEARCH_POOL.md` / `ROUND.md`
 4. 建目录 `research/rounds/`、`experiments/`
