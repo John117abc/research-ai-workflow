@@ -373,10 +373,10 @@ approval_quote: NONE
 1. GitHub 建**私有**仓库（公开前先确认不含受限数据、PDF、大数据）
 2. 把**项目**仓库 clone 到独立位置（如 `D:\ai_space\projects\<name>`），
    然后核对 `git remote -v` 指向的是这个项目仓库，不是协议仓库
-3. 复制 `PROTOCOL.md`（版本号在文件头）、`prompts/` 三份提示词，与五个模板：
+3. 复制 `PROTOCOL.md`（版本号在文件头）、`prompts/` 全部提示词（01–04），与五个模板：
    `AGENTS.md` / `RESEARCH_ACTIVE.md` / `PROJECT_STATE.md` / `RESEARCH_POOL.md` / `ROUND.md`
 4. 建目录 `research/rounds/`、`experiments/`
-5. 建 `research/state.yml`：`phase: IDEATION`，`round` 三项全 `NONE`
+5. 复制 `templates/state.yml` 到 `research/state.yml`：`phase: IDEATION`，`round` 三项全 `NONE`
 6. `.gitignore`：数据、权重、checkpoint、`outputs/`
 7. 首次 commit：`init: 研究仓库初始化`
 
