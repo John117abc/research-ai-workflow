@@ -340,7 +340,7 @@ approval_quote: NONE
 
 1. GitHub 建**私有**仓库（公开前先确认不含受限数据、PDF、大数据）
 2. 本地 clone 到固定位置
-3. 复制 `PROTOCOL.md`（版本号在文件头）与五个模板：
+3. 复制 `PROTOCOL.md`（版本号在文件头）、`prompts/` 三份提示词，与五个模板：
    `AGENTS.md` / `RESEARCH_ACTIVE.md` / `PROJECT_STATE.md` / `RESEARCH_POOL.md` / `ROUND.md`
 4. 建目录 `research/rounds/`、`experiments/`
 5. 建 `research/state.yml`：`phase: IDEATION`，`round` 三项全 `NONE`

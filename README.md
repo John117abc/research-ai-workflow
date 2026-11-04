@@ -24,10 +24,18 @@
 
 **已有研究**：把 `PROTOCOL.md` 放进仓库根目录，让 AI 从 §1「开工检查」开始，先汇报，再动。
 
+**换 AI / 隔几天回来**：发 [`prompts/02-resume.md`](prompts/02-resume.md) 里那段。核心原则是**续接靠文件，不靠聊天记录**。
+
+**上下文快满**：发 [`prompts/03-checkpoint.md`](prompts/03-checkpoint.md)，让 AI 把未落盘的决定写进文件，并生成下一段续接提示词。
+
 ## 目录
 
 ```text
 ├── PROTOCOL.md        AI 执行手册：开工读序、七环节输出格式、九道门禁、四个挑战节点
+├── prompts/
+│   ├── 01-start.md          开新研究：整段发给 AI，它按 §10 初始化
+│   ├── 02-resume.md         续接：换 AI / 达到上限 / 隔几天回来
+│   └── 03-checkpoint.md     快满时保存：落盘未写入的决定，并让 AI 自己写续接提示词
 ├── docs/
 │   ├── DESIGN.md      设计规格：claim 模型、主循环、防失控、载体与好用度判据
 │   └── METHODOLOGY-v1.1.md   方法论：五阶段生命周期、A/B/C 权限分级、五格审批
